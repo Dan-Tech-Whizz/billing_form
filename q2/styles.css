@@ -5,90 +5,92 @@
   Group Members:
    - Daniel Wright          [2401010405]
    - Gabrielle Lawerence    [ID]
-   - Aliahh Thompson        [ID]
+   - Aliahh Thompson        [1700255977]
    - Nathan Chen            [ID]
  */
 
  body {
-    font-family: Ariel, sans-serif;
-    background-color: white
-    padding 25px;
-    margin: 0;
+   font-family: Arial, sans-serif;
+   background-color: white
+   padding 25px;
+   margin: 0;
  }
 
  h2 {
-    font-family: sans-serif;
-    color:#444
-    margin-bottom 5px;
+   font-family: sans-serif;
+   color:#444;
+   margin-bottom: 5px;
  }
 
  fieldset {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 15px;
-    background-color: #fff;
+   border: 1px solid #ccc;
+   padding: 20px;
+   margin: 15px;
+   background-color: #fff;
  }
 
  legend {
-    font-size: 14px;
-    color: #555;
-    padding: 0 5px;
+   font-size: 14px;
+   color: #555;
+   padding: 0 5px;
  }
 
  .form-row {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
+   margin-bottom: 12px;
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
  }
 
- .frm-row label {
-    display: inline-block;
-    width: 150px;
-    text-align: right;
-    margin-right: 15px;
-    font-size: 13px;
-    color: #555;
+ .form-row label {
+   display: inline-block;
+   width: 150px;
+   text-align: right;
+   margin-right: 15px;
+   font-size: 13px;
+   color: #555;
  }
 
 .form-row input[type="text"], 
 .form-row select {
-    width: 320px;
-    padding: 4px;
-    border: 1px solid #ccc;
+   width: 320px;
+   padding: 4px;
+   border: 1px solid #ccc;
  }
 
  .radio-options {
-    display: inline-block;
+   display: inline-block;
  }
 
  .checkbox-row {
-    padding-left: 165px;
+   padding-left: 165px;
  }
 
  .checkbox-row input {
-    margin-right: 5px;
+   margin-right: 5px;
  }
 
  .inline-label {
-    text-align: left !important;
-    width: auto !important;
+   text-align: left !important;
+   width: auto !important;
  }
 
  .button-area {
-    padding-left: 165px;
+   padding-left: 165px;
  }
 
  .blurred-feild {
-    background-color: #e2e2e2 !important;
-    opacity: 0.6;
-    pointer-events: none;
+   background-color: #e2e2e2 !important;
+   filter:blur(1px);
+   opacity: 0.6;
+   pointer-events: none;
  }
 
  label.error {
-    color: red;
-    font-size: 10px;
-    margin-left: 10px;
-    text-align: left;
-    width: auto;
-    display: inline;
+   color: red;
+   font-size: 10px;
+   margin-left: 10px;
+   text-align: left;
+   width: auto;
+   display: inline;
  }
