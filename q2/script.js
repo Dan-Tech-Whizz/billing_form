@@ -7,29 +7,90 @@ $.validator.addMethod("lecturerEmailCheck", function(value, element) {
     }
 }, "Please enter a valid email structure.");
 
-$(document).ready(function)() {
+$(document).ready(function() {
 
-    function eveluatePaymentState(){
-        var currentPayment = $ ('input[name="payment"];checked').val();
-        if (currenttPyment === 'paypal') {
-            $('.payment-card-feild').addclass('blurred-feild').val('').prop('disabled', true);
-    
-        }else {
-            $('.payment-card-feild').removeClass('blurred-feild').prop('disabled', false);
+    function evaluatePaymentState(){
+        var currentPayment = $('input[name="payment"]:checked').val();
+        if (currentPayment === 'paypal') {
+            $('.payment-card-field').addClass('blurred-feild').val('').prop('disabled', true);
+            $('.payment-card-field').removeClass('error');
+        } else {
+            $('.payment-card-field').removeClass('blurred-feild').prop('disabled', false);
         }
     }
-}
 
-evaluatePymentState();
 
-$('input[name="payment"]').change(function() {
+    evaluatePaymentState();
+
+    $('input[name="payment"]').change(function() {
         evaluatePaymentState();
     });
 
-$('#same_as_billing').change(function() {
+    
+    function shippingNeeded() {
+        return !$('#same_as_billing').is(':checked');
+    }
+
+    $('#same_as_billing').change(function() {
         if ($(this).is(':checked')) {
-            $('#extra_shipping_section').hide();
+            $('#shippingFields').hide();
         } else {
-            $('#extra_shipping_section').show();
+            $('#shippingFields').show();
         }
     });
+
+    // Execute field syntax validation settings
+    $("#funForm").validate({
+        rules: {
+            name: "required",
+            email: {
+                required: true,
+                lecturerEmailCheck: true // Uses the added filter method above
+            },
+            address: "required",
+            city: "required",
+            state: "required",
+            postal: "required",
+            country: "required",
+            
+            // Conditional requirement: Card fields only matter if payment is not PayPal
+            card_number: { 
+                required: function() {
+                    return $('input[name="payment"]:checked').val() !== 'paypal';
+                }
+            },
+            exp_date: {
+                required: function() {
+                    return $('input[name="payment"]:checked').val() !== 'paypal';
+                }
+            },
+        
+            sName:    { required: shippingNeeded },
+            sAddress: { required: shippingNeeded },
+            sCity:    { required: shippingNeeded },
+            sState:   { required: shippingNeeded },
+            sPostal:  { required: shippingNeeded },
+            sCountry: { required: shippingNeeded }
+        },
+        messages: {
+            name: "Name field can not be left blank.",
+            email: {
+                required: "An email identifier is required.",
+                lecturerEmailCheck: "Improper email address pattern syntax."
+            },
+            address: "Please include your street location address.",
+            city: "City is required.",
+            state: "State or Province field required.",
+            postal: "Postal tracking code is missing.",
+            country: "Please select an applicable country option.",
+            card_number: "Credit card information is required.",
+            exp_date: "Card expiry date is required.",
+            sName: "Please fill out shipping receiver name.",
+            sAddress: "Shipping destination location required.",
+            sCity: "Shipping city is required.",
+            sState: "Shipping state or province is required.",
+            sPostal: "Shipping postal code is required.",
+            sCountry: "Please select a shipping country."
+        }
+    });
+});
