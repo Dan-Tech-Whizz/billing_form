@@ -9,3 +9,37 @@
    - Nathan Chen            [ID]
  */
 -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Q3 - Employee DataTable</title>
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+</head>
+<body>
+  <h1>Employees</h1>
+
+  <table id="employeeTable" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Start Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+  </table>
+
+  <!-- jQuery first, then DataTables, then your script -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
